@@ -41,17 +41,9 @@ classdef oscilloscope
               
           end
           
-          function obj= autoScale(obj,channel)
-
+          function autoScale(obj,channel)
               while measPeakToPeak(obj,channel) >= 9.9000e+37
-                  obj.channels(channel).verticalScale=(obj.channels(channel).verticalScale)+3.5*obj.channels(channel).verticalScale;
-                  updateProbe(obj);
-                  
-              end
-              
-              while  measPeakToPeak(obj,channel) < (obj.channels(channel).verticalScale)*3
-                  obj.channels(channel).verticalScale=(obj.channels(channel).verticalScale)-(0.6)*obj.channels(channel).verticalScale;
-                  updateProbe(obj);
+                  obj.channels()
                   
               end
           end
