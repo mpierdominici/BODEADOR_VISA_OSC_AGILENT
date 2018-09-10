@@ -5,17 +5,25 @@ classdef functionGenerator
         peakToPeak
         offset
         dutyCycle
+        impedance
+        
     end
     methods
         %functionGenerator , constructor
         %addres -> visa address
         %
         function obj = functionGenerator(address)
-            %obj.device=visa('agilent', address);
+            obj.device=visa('agilent', address);
             obj.frequency=0;%seteo las variables en cero
             obj.dutyCycle=0;
             obj.offset=0;
             obj.peakToPeak=0;
+            obj.impedance=0;
+            fprintf(obj.device, 'OUTPut OFF');%apago la salida del generador
+            fprintf(obj.device,'OUTPut:LOAD INFinity'); %seteo el generado en alta impedancia
+            fprintf(obj.device,'VOLTage:UNIT VPP');%seteo las unidades del generador en volt peak to peak
+            fprintf(obj.device,'FUNCtion SINusoid');%forma de onda por defecto la sinusoidal
+            
         end
         
         function obj = setFrequency(obj,frequency)
@@ -31,7 +39,7 @@ classdef functionGenerator
         end
         
         function updateSin(obj)
-            %falta buscar en la documentacion como mandar esta data
+            fprintf(obj.device,strcat('APPL:SIN',{' '}, num2str(obj.frequency,3),{' '} ,'KHZ,',{' '}, num2str(obj.peakToPeak,3),{' '}, 'VPP,',{' '}, num2str(obj.offset,3),{' '}, 'V'));
         end
      
         function status = getCurrentStatus(obj)
