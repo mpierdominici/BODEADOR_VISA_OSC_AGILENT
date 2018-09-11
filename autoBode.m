@@ -41,14 +41,26 @@ classdef autoBode
         
         end
         
-        function run(obj)
+        function datos = run(obj)
+            first=1;
            for i=1:(obj.points)
+               if first==1
+                 
+               end
+               
                obj.fg=setFrequency(obj.fg,obj.frequencyVector(i));
                updateSin(obj.fg);
-               
+               obj.os.horizontalScale=0.25*(1/(1000*(obj.frequencyVector(i))));
+               updateHscale(obj.os);
                pause(obj.establishmentTime);
-               
-               
+          
+               obj.os=obj.os.autoScale(obj.channelInput);
+               obj.os=obj.os.autoScale(obj.channelOutput);
+               if first==1
+                 datos=[obj.frequencyVector(i) , 20*log10((measPeakToPeak(obj.os,obj.channelOutput))/measPeakToPeak(obj.os,obj.channelInput))];
+               first=0;
+               end
+               datos=[datos; [obj.frequencyVector(i) , 20*log10((measPeakToPeak(obj.os,obj.channelOutput))/measPeakToPeak(obj.os,obj.channelInput))]];
                
            end
         end

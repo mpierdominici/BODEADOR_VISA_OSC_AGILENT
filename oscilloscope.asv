@@ -43,7 +43,7 @@ classdef oscilloscope
           
           function obj= autoScale(obj,channel)
 
-              while measPeakToPeak(obj,channel) >= (6*obj.channels(channel).verticalScale)
+              while measPeakToPeak(obj,channel) >= 9.9000e+37
                   obj.channels(channel).verticalScale=(obj.channels(channel).verticalScale)+3.5*obj.channels(channel).verticalScale;
                   updateProbe(obj);
                   
@@ -58,8 +58,7 @@ classdef oscilloscope
           
           function updateHscale(obj)
               %:TIMebase:SCALe 15e-9 s
-              fprintf(obj.device,[' :TIMebase:SCALe ',num2str(obj.horizontalScale,3),' s']);
-          
+              fprintf(obj.device,[' :TIMebase:SCALe ',num2str(obj.horizontalScale,3),' v']);
           end
           
           

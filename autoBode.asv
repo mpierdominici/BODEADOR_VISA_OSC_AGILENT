@@ -27,6 +27,7 @@ classdef autoBode
         obj.isLineal=isLineal;
         obj.points=points;
         obj.peakToPeak=peakToPeak;
+        
         obj.fg=setPeakToPeak(obj.fg,obj.peakToPeak);
         obj.fg=setFrequency(obj.fg,obj.Ifrequency);
         updateSin(obj.fg);
@@ -40,10 +41,27 @@ classdef autoBode
         
         end
         
-        function run(obj)
+        function datos = run(obj)
+            first=1;
            for i=1:(obj.points)
-               obj.fg=setFrequency(obj.fg,obj.Ifrequency);
+               if first==1
+                 
+               end
+               
+               obj.fg=setFrequency(obj.fg,obj.frequencyVector(i));
                updateSin(obj.fg);
+               obj.os.horizontalScale=0.25*(1/(1000*(obj.frequencyVector(i))));
+               updateHscale(obj.os);
+               pause(obj.establishmentTime);
+          
+               obj.os.autoScale(obj.channelInput);
+               obj.os.autoScale(obj.channel);
+               if first==1
+                 datos=[obj.frequencyVector(i) , 20*log10((measPeakToPeak(obj.os,obj.channelInput))/measPeakToPeak(obj.os,obj.channelOutput))];
+               first=0;
+               end
+               datos=[datos; [obj.frequencyVector(i) , 20*log10((measPeakToPeak(obj.os,obj.channelInput))/measPeakToPeak(obj.os,obj.channelOutput))]];
+               
            end
         end
         
