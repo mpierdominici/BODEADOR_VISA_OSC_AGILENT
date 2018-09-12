@@ -62,6 +62,11 @@ classdef oscilloscope
           
           end
           
-          
+          function  phase = measPhase(obj,channel1,channel2)
+              
+              %:MEASure:PHASe? CHANnel1, CHANnel2
+               fprintf(obj.device,[':MEASure:PHASe? ',' CHANnel',num2str(obj.channels(channel1).channelNumber,0),', CHANnel',num2str(obj.channels(channel2).channelNumber,0)]);
+             phase=str2double(fscanf(obj.device));
+          end
       end
 end

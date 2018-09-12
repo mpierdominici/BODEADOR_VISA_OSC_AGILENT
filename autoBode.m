@@ -57,10 +57,10 @@ classdef autoBode
                obj.os=obj.os.autoScale(obj.channelInput);
                obj.os=obj.os.autoScale(obj.channelOutput);
                if first==1
-                 datos=[obj.frequencyVector(i) , 20*log10((measPeakToPeak(obj.os,obj.channelOutput))/measPeakToPeak(obj.os,obj.channelInput))];
+                 datos=[obj.frequencyVector(i) ,measPeakToPeak(obj.os,obj.channelOutput),measPeakToPeak(obj.os,obj.channelInput),measPhase(obj.os,obj.channelOutput,obj.channelInput)];
                first=0;
                end
-               datos=[datos; [obj.frequencyVector(i) , 20*log10((measPeakToPeak(obj.os,obj.channelOutput))/measPeakToPeak(obj.os,obj.channelInput))]];
+               datos=[datos; [obj.frequencyVector(i) ,measPeakToPeak(obj.os,obj.channelOutput),measPeakToPeak(obj.os,obj.channelInput),measPhase(obj.os,obj.channelOutput,obj.channelInput)]];
                
            end
         end
