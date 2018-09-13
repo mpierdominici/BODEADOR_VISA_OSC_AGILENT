@@ -42,18 +42,25 @@ classdef oscilloscope
           end
           
           function obj= autoScale(obj,channel)
+              
+              obj.channels(channel).verticalScale=getVscale(obj,channel);
 
+               while  measPeakToPeak(obj,channel) < (obj.channels(channel).verticalScale)*3
+                  obj.channels(channel).verticalScale=(obj.channels(channel).verticalScale)-(0.4)*obj.channels(channel).verticalScale;
+                  %updateProbe(obj);
+                  updateVscale(obj,channel)
+               end
+              
               while measPeakToPeak(obj,channel) >= (6*obj.channels(channel).verticalScale)
                   obj.channels(channel).verticalScale=(obj.channels(channel).verticalScale)+3.5*obj.channels(channel).verticalScale;
-                  updateProbe(obj);
-                  
+                  %updateProbe(obj);
+                  updateVscale(obj,channel)
               end
               
-              while  measPeakToPeak(obj,channel) < (obj.channels(channel).verticalScale)*3
-                  obj.channels(channel).verticalScale=(obj.channels(channel).verticalScale)-(0.6)*obj.channels(channel).verticalScale;
-                  updateProbe(obj);
-                  
-              end
+             
+         % measPeakToPeak(obj,channel)
+          
+          
           end
           
           function updateHscale(obj)
@@ -62,6 +69,17 @@ classdef oscilloscope
           
           end
           
+          function updateVscale(obj,i)
+           fprintf(obj.device,[':CHANnel',num2str(obj.channels(i).channelNumber,0),':SCALe ',num2str(obj.channels(i).verticalScale,3),' V']);
+          end
+          
+          
+          function  vs =getVscale(obj,i)
+           %:CHANnel1:SCALe?
+              fprintf(obj.device,[':CHANnel',num2str(obj.channels(i).channelNumber,0),':SCALe?']);
+              vs=str2double(fscanf(obj.device));
+            % [':CHANnel',num2str(obj.channels(i).channelNumber,0),':SCALe?']
+          end
           function  phase = measPhase(obj,channel1,channel2)
               
               %:MEASure:PHASe? CHANnel1, CHANnel2

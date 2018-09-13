@@ -56,16 +56,32 @@ classdef autoBode
                obj.os=obj.os.autoScale(obj.channelInput);%ajusto la escala vertical de los canales
                obj.os=obj.os.autoScale(obj.channelOutput);%
                
+               promFase=measPhase(obj.os,obj.channelOutput,obj.channelInput);
+               
+               if promFase < 0
+                   promFase=promFase+360;
+               end
+                   
+               for j=1:4
+                   measFase=measPhase(obj.os,obj.channelOutput,obj.channelInput);
+                   if  measFase < 0
+                        measFase= measFase+360;
+                   end
+                   promFase=( measFase+promFase)/2;
+                   
+               end
+               
+               
                %cargo los datos en un vector, donde la primer columan es
                %frecuencia en kHz, la segunda columna es la tension de
                %entrada, la tercer columna es la tension de salida y la
                %cuarta columna es la fase. // las tenciones son
                %peak-to-peak
                if first==1
-                   datos=[obj.frequencyVector(i) ,measPeakToPeak(obj.os,obj.channelOutput),measPeakToPeak(obj.os,obj.channelInput),measPhase(obj.os,obj.channelOutput,obj.channelInput)];
+                   datos=[obj.frequencyVector(i) ,measPeakToPeak(obj.os,obj.channelInput),measPeakToPeak(obj.os,obj.channelOutput),promFase];
                    first=0;
                else
-                   datos=[datos; [obj.frequencyVector(i) ,measPeakToPeak(obj.os,obj.channelOutput),measPeakToPeak(obj.os,obj.channelInput),measPhase(obj.os,obj.channelOutput,obj.channelInput)]];
+                   datos=[datos; [obj.frequencyVector(i) ,measPeakToPeak(obj.os,obj.channelInput),measPeakToPeak(obj.os,obj.channelOutput),promFase]];
                end
                
            end
