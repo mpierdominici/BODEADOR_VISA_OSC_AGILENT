@@ -1,6 +1,3 @@
-# BODEADOR_VISA_OSC_AGILENT
-
-
 # Medidor de respuesta en frecuencia
 El objetivo del programa es medir automaticamnte la respuesta en frecuencia de un circuito, controlando un osiloscopio y un generador de funciones para lograrlo.
 
@@ -22,7 +19,7 @@ El objetivo del programa es medir automaticamnte la respuesta en frecuencia de u
 - se instancia el objeto autoBode de la siguiente manera:
 autoBode(Doscilloscope,DfunctionGenerator,peakToPeak,StartFrequency,StopFrequency,channelInput,channelOutput,establishmentTime,isLineal,points)
 
-Donde Doscilloscope
+Donde Doscilloscope y DfunctionGenerator, son las instancias de los equipos ya mencionados
 
 
 
