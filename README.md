@@ -13,7 +13,7 @@ El objetivo del programa es medir automaticamnte la respuesta en frecuencia de u
 - Cantidad de puntos y tipo de barrido(lin/log) seleccionable para el usuario.
 - Configuracion automatica de escala y vertical para maximisar la precision de la medicion.
 
-## Como se usa
+## Inicializacion
 
 - Se instancian los objetos de oscilloscope y functionGenerator, pasandoles como unico parametro el VISA ADDRESS de cada equipo.
 - se instancia el objeto autoBode de la siguiente manera:
@@ -30,4 +30,7 @@ Donde
 - isLineal: 1 si el barrido de frecuencia es lineal, 0 si el barrido es logaritmico.
 - points: cantidad de frecuencias en el intervalo seteado.
 
+## Medir
+
+Una vez relizada la inicializacion, correr el metodo run de la clase autoBode, este devolvera, luego de relizar la medicion, una matriz con el siguiente formato, primera columna frecuencia en KHz, segunda columna tension peak to peak de entrada en volts, tercer columna tension peak to peak de la salida en volts y la cuarta columna la fase.
 
