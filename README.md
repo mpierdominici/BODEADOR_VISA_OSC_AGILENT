@@ -20,14 +20,14 @@ El objetivo del programa es medir automaticamnte la respuesta en frecuencia de u
 autoBode(Doscilloscope,DfunctionGenerator,peakToPeak,StartFrequency,StopFrequency,channelInput,channelOutput,establishmentTime,isLineal,points)
 
 Donde
--Doscilloscope y DfunctionGenerator, son las instancias de los equipos ya mencionados.
--peakToPeak: tension peak to peak en volts a la que se realizara la medicion.
--StartFrequency: frecuencia en kHz, a la que comienza la medicion.
--StopFrequency: frecuencia en kHz, a la que termina la medicion.
--channelInput: numero de canal, entre 1 y 4, el cual esta conectado a la entrada.
--channelOutput: numero de canal, entre 1 y 4, el cual esta conectado a la entrada.
--establishmentTime: tiempo en segundos que se espera para que se estavilice el circuito.
--isLineal: 1 si el barrido de frecuencia es lineal, 0 si el barrido es logaritmico.
--points: cantidad de frecuencias en el intervalo seteado.
+- Doscilloscope y DfunctionGenerator, son las instancias de los equipos ya mencionados.
+- peakToPeak: tension peak to peak en volts a la que se realizara la medicion.
+- StartFrequency: frecuencia en kHz, a la que comienza la medicion.
+- StopFrequency: frecuencia en kHz, a la que termina la medicion.
+- channelInput: numero de canal, entre 1 y 4, el cual esta conectado a la entrada.
+- channelOutput: numero de canal, entre 1 y 4, el cual esta conectado a la entrada.
+- establishmentTime: tiempo en segundos que se espera para que se estavilice el circuito.
+- isLineal: 1 si el barrido de frecuencia es lineal, 0 si el barrido es logaritmico.
+- points: cantidad de frecuencias en el intervalo seteado.
 
 
