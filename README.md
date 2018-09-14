@@ -19,7 +19,8 @@ El objetivo del programa es medir automaticamnte la respuesta en frecuencia de u
 - se instancia el objeto autoBode de la siguiente manera:
 autoBode(Doscilloscope,DfunctionGenerator,peakToPeak,StartFrequency,StopFrequency,channelInput,channelOutput,establishmentTime,isLineal,points)
 
-Donde Doscilloscope y DfunctionGenerator, son las instancias de los equipos ya mencionados
+Donde Doscilloscope y DfunctionGenerator, son las instancias de los equipos ya mencionados.
+--peakToPeak
 
 
 
