@@ -34,7 +34,7 @@ Donde
 
 Una vez relizada la inicializacion, correr el metodo run de la clase autoBode, este devolvera, luego de relizar la medicion, una matriz con el siguiente formato, primera columna frecuencia en KHz, segunda columna tension peak to peak de entrada en volts, tercer columna tension peak to peak de la salida en volts y la cuarta columna la fase (en grados).
  
- ##Ejemplo
+ ## Ejemplo
  
  os=oscilloscope('visa adress');
  fg=functionGenerator('visa adress');
