@@ -36,11 +36,11 @@ Una vez relizada la inicializacion, correr el metodo run de la clase autoBode, e
  
  ## Ejemplo
  
- os=oscilloscope('visa adress');
- fg=functionGenerator('visa adress');
- a=autoBode(...);
- datos=run(a);
- csvwrite(datos);
+ - os=oscilloscope('visa adress');
+ - fg=functionGenerator('visa adress');
+ - a=autoBode(...);
+ - datos=run(a);
+- csvwrite(datos);
 
 
 
