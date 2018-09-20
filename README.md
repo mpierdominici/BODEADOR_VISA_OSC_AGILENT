@@ -3,7 +3,7 @@ El objetivo del programa es medir automaticamnte la respuesta en frecuencia de u
 
 ## Primeros pasos
 - Poseer Matlab 2016b o superior.
-- Instalar los drivers para los esquipos.
+- Instalar los drivers para los esquipos.(windows https://drive.google.com/open?id=1fXEhHn0nLYQWUKsfQt_i0UVms23hndL4)
 - Descargar el repositorio
 
 ## Caracterisiticas del programa
