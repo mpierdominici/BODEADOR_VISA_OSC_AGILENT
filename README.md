@@ -40,7 +40,7 @@ Una vez relizada la inicializacion, correr el metodo run de la clase autoBode, e
  - fg=functionGenerator('visa adress');
  - a=autoBode(...);
  - datos=run(a);
-- csvwrite(datos);
+- csvwrite('fileName.csv',datos);
 
 
 
